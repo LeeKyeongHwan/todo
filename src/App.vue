@@ -1,29 +1,57 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="todo-app">
+    <drawer></drawer>
+    <app-header></app-header>
+
+    <v-content>
+      <v-container
+        class="fill-height"
+        fluid
+      >
+        <v-row
+          align="center"
+          justify="center"
+        >
+          <v-col class="shrink">
+            <v-card
+              color="#385F73"
+              dark
+            >
+              <v-card-text class="white--text">
+                <div class="headline mb-2">Unlimited music now</div>
+                Listen to your favorite artists and albums whenever and wherever, online and offline.
+              </v-card-text>
+
+              <v-card-actions>
+                <v-btn text>Listen Now</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-content>
+
+    <v-footer app>
+      <span>&copy; 2019</span>
+    </v-footer>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script lang="ts">
+import Vue from 'vue'
+import Drawer from './components/Drawer.vue'
+import AppHeader from './components/AppHeader.vue'
+
+export default Vue.extend({
+  name: 'App',
+  components: {
+    Drawer,
+    AppHeader
+  },
+  data: () => ({
+    source: ''
+  }),
+  created () {
   }
-}
-</style>
+})
+</script>
