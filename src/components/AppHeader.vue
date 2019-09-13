@@ -9,7 +9,7 @@
 
     <div class="flex-grow-1"></div>
 
-    <v-btn icon>
+    <v-btn icon @click="openCreateToDo">
       <v-icon>mdi-plus</v-icon>
     </v-btn>
   </v-app-bar>
@@ -17,13 +17,17 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import EventBus from '@/js/eventBus'
 
 export default Vue.extend({
   data: () => ({
   }),
   methods: {
     clickDrawer (): void {
-      this.$store.commit('changeDrawer')
+      EventBus.$emit('changeDrawer')
+    },
+    openCreateToDo (): void {
+      this.$store.commit('openModal', 'createToDo')
     }
   }
 })

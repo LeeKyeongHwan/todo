@@ -4,36 +4,15 @@
     <app-header></app-header>
 
     <v-content>
-      <v-container
-        class="fill-height"
-        fluid
-      >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col class="shrink">
-            <v-card
-              color="#385F73"
-              dark
-            >
-              <v-card-text class="white--text">
-                <div class="headline mb-2">Unlimited music now</div>
-                Listen to your favorite artists and albums whenever and wherever, online and offline.
-              </v-card-text>
-
-              <v-card-actions>
-                <v-btn text>Listen Now</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
+      <router-view></router-view>
     </v-content>
 
     <v-footer app>
       <span>&copy; 2019</span>
     </v-footer>
+
+    <modal-to-do-create v-if="isCreateToDo"></modal-to-do-create>
+    <modal-to-do-update v-if="isUpdateToDo"></modal-to-do-update>
   </v-app>
 </template>
 
@@ -41,16 +20,27 @@
 import Vue from 'vue'
 import Drawer from './components/Drawer.vue'
 import AppHeader from './components/AppHeader.vue'
+import ModalToDoCreate from './components/ModalToDoCreate.vue'
+import ModalToDoUpdate from './components/ModalToDoUpdate.vue'
 
 export default Vue.extend({
   name: 'App',
   components: {
     Drawer,
-    AppHeader
+    AppHeader,
+    ModalToDoCreate,
+    ModalToDoUpdate
   },
   data: () => ({
-    source: ''
   }),
+  computed: {
+    isCreateToDo (): boolean {
+      return this.$store.getters.getCreateToDo
+    },
+    isUpdateToDo (): boolean {
+      return this.$store.getters.getUpdateToDo
+    }
+  },
   created () {
   }
 })

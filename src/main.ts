@@ -5,7 +5,9 @@ import store from './store'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify'
 
-Vue.config.productionTip = false
+// Vue.config.productionTip = false
+
+Vue.prototype.$eventBus = new Vue()
 
 new Vue({
   router,

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
+import colors from 'vuetify/lib/util/colors'
 
 Vue.use(Vuetify)
 
@@ -8,6 +9,11 @@ export default new Vuetify({
     iconfont: 'mdi'
   },
   theme: {
-    dark: true
+    dark: true,
+    themes: {
+      dark: {
+        primary: colors.pink.lighten1
+      }
+    }
   }
 })
