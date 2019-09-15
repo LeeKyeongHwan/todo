@@ -2,7 +2,7 @@ import firebase from 'firebase'
 
 const ToDoCollection = firebase.firestore().collection('todo')
 
-export const post = (data: object) => {
+export const POST = (data: object) => {
   return new Promise((resolve, reject) => {
     ToDoCollection
       .add(data)
@@ -12,7 +12,7 @@ export const post = (data: object) => {
   })
 }
 
-export const getAll = () => {
+export const GET_ALL = () => {
   return new Promise((resolve, reject) => {
     ToDoCollection.orderBy('date', 'desc')
       .get().then(querySnapshot => {
@@ -24,6 +24,15 @@ export const getAll = () => {
           })
         })
         resolve(data)
+      })
+  })
+}
+
+export const DELETE = (id: string) => {
+  return new Promise((resolve, reject) => {
+    ToDoCollection.doc(id).delete()
+      .then(querySnapshot => {
+        resolve()
       })
   })
 }

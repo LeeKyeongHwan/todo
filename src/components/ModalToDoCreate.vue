@@ -1,5 +1,5 @@
 <template>
-   <v-dialog :value="dialog" max-width="600px" @click:outside.once="closeModal">
+  <v-dialog :value="dialog" max-width="600px" @click:outside.once="closeModal">
     <v-card>
       <v-card-title>
         <span class="headline">To Do Create</span>
@@ -95,7 +95,7 @@ export default Vue.extend({
         date: moment(moments).valueOf()
       })
       try {
-        await todo.post(data)
+        await todo.POST(data)
         this.$store.dispatch('getToDos')
         this.$store.commit('closeModal', 'createToDo')
       } catch (e) {

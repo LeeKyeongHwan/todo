@@ -37,7 +37,7 @@ export default new Vuex.Store({
   },
   actions: {
     async getToDos ({ commit }) {
-      let data = await todo.getAll()
+      let data = await todo.GET_ALL()
       commit('getToDos', data)
     }
   },
